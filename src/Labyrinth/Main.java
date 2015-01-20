@@ -31,6 +31,7 @@ public class Main {
             System.err.println("Property-File not found!");
         }
         terminal.enterPrivateMode();
+        terminal.setCursorVisible(false);
         Player.MovePlayer(0, true);
         while(run) {
             Input.Analyse();
