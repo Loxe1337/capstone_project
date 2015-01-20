@@ -37,12 +37,12 @@ public class Player {
                     }
                     break;
                 case 3:
-                    if(PlayerPos_x<(Configuration.width-1)) {
+                    if(PlayerPos_x<(Configuration.width-2)) {
                         PlayerPos_x+=1;
                     }
                     break;
                 case 4:
-                    if(PlayerPos_y<(Configuration.height-1)) {
+                    if(PlayerPos_y<(Configuration.height-2)) {
                         PlayerPos_y+=1;
                     }
                     break;
