@@ -5,13 +5,14 @@
 package Labyrinth;
 
 import com.googlecode.lanterna.input.Key;
+import java.io.IOException;
 
 /**
  *
  * @author _Lennart_Rehkaemper_
  */
 public class Input {
-    public static void Analyse() throws InterruptedException {
+    public static void Analyse() throws InterruptedException, IOException {
         // Auf Eingabe warten:
         Key key = Main.terminal.readInput();
         while(key == null) {
@@ -23,6 +24,7 @@ public class Input {
         switch(key.getKind()) {
             case Escape:
                 Menu.MenuOpen = true;
+                Main.terminal.clearScreen();
                 Menu.show();
                 Draw.Static();
                 break;

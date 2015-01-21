@@ -6,7 +6,7 @@
             <url>src/Labyrinth/Main.java</url>
             <bookmark id="1">
                 <name/>
-                <line>23</line>
+                <line>24</line>
                 <key/>
             </bookmark>
         </file>
@@ -16,6 +16,9 @@
             <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Player.java</file>
             <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Draw.java</file>
             <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Configuration.java</file>
+            <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Menu.java</file>
+            <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Elements.java</file>
+            <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Game.java</file>
             <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Main.java</file>
             <file>file:/C:/Users/Lennart_2/Documents/NetBeansProjects/Projekt%20PGdP/src/Labyrinth/Input.java</file>
         </group>

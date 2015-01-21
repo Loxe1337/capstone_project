@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<entry key="EnemyPos_x_1">7</entry>
-<entry key="EnemyPos_x_0">3</entry>
-<entry key="Tries">3</entry>
+<entry key="KeyFound">0</entry>
 <entry key="PlayerPos_y">0</entry>
 <entry key="PlayerPos_x">7</entry>
-<entry key="EnemyPos_y_1">5</entry>
-<entry key="KeyFound">0</entry>
+<entry key="Tries">3</entry>
+<entry key="Enemy_Nr">2</entry>
+<entry key="EnemyPos_x_1">5</entry>
+<entry key="EnemyPos_x_0">2</entry>
+<entry key="EnemyPos_y_1">6</entry>
 <entry key="EnemyPos_y_0">4</entry>
 </properties>

@@ -21,7 +21,6 @@ public class Menu {
             String save = "2. Save game", help = "1. Legend", title="*Game paused*";
             String load = "3. Load game", resume = "4. Resume";
             String select = "Please choose an option by pressing the number.";
-            Main.terminal.clearScreen();
             Main.terminal.applyForegroundColor(Terminal.Color.DEFAULT);
             Main.terminal.moveCursor(3, 2);
             for(int i=0; i<title.length(); i++) {
@@ -125,9 +124,23 @@ public class Menu {
                     break;
                 case '2':
                     Game.save();
+                    String finished_save = "Game saved!";
+                    Main.terminal.moveCursor(1, 15);
+                    Main.terminal.applyForegroundColor(Terminal.Color.WHITE);
+                    for(int i=0; i<finished_save.length(); i++) {
+                        Main.terminal.putCharacter(finished_save.charAt(i));
+                    }
                     break;
                 case '3':
-                    //load game here;
+                    int s = Game.load();
+                    if(s==1) {
+                        String finished_load = "Game loaded!";
+                        Main.terminal.moveCursor(1, 15);
+                        Main.terminal.applyForegroundColor(Terminal.Color.WHITE);
+                        for(int i=0; i<finished_load.length(); i++) {
+                            Main.terminal.putCharacter(finished_load.charAt(i));
+                        }
+                    }
                     break;
                 case '4':
                     MenuOpen = false;
