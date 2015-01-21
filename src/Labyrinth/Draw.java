@@ -18,7 +18,7 @@ public class Draw {
         Main.terminal.clearScreen();
         for(int i=0; i<Configuration.height; i++) {
             for(int n=0; n<Configuration.width; n++) {
-                Main.terminal.moveCursor(i, n);
+                Main.terminal.moveCursor(i, n+1);
                 switch(Configuration.field[i][n]) {
                     case 0:
                         Main.terminal.applyForegroundColor(Terminal.Color.WHITE);
@@ -36,13 +36,11 @@ public class Draw {
                         Main.terminal.applyForegroundColor(Terminal.Color.RED);
                         Main.terminal.putCharacter('\u2620');
                         break;
-                    case 4:
-                        Main.terminal.applyForegroundColor(Terminal.Color.RED);
-                        Main.terminal.putCharacter('\u2623');
-                        break;
                     case 5:
-                        Main.terminal.applyForegroundColor(Terminal.Color.YELLOW);
-                        Main.terminal.putCharacter('\u26BF');
+                        if(!Player.key_found) {
+                            Main.terminal.applyForegroundColor(Terminal.Color.YELLOW);
+                            Main.terminal.putCharacter('\u26BF');
+                        }
                         break;
                     case 6:
                         Main.terminal.putCharacter(' ');
@@ -54,13 +52,20 @@ public class Draw {
     
     public static void Dyn() {
         //Draw Player:
-        Main.terminal.moveCursor(Player.PlayerPos_x,Player.PlayerPos_y);
+        Main.terminal.moveCursor(Player.PlayerPos_x,Player.PlayerPos_y+1);
         Main.terminal.applyForegroundColor(Terminal.Color.BLUE);
         Main.terminal.putCharacter('\u265C');
-        for(int i=0; i<Configuration.exit_nr; i++) {
-            if(Configuration.exit_x[i] == Player.PlayerPos_x && Configuration.exit_y[i] == Player.PlayerPos_y) {
-                Main.run = false;
-            }
+        //Draw dynamic Enemies:
+        for(int i=0; i<Elements.Enemy_Nr; i++){
+            Main.terminal.moveCursor(Elements.DynEnemyPos_x[i], Elements.DynEnemyPos_y[i]+1);
+            Main.terminal.applyForegroundColor(Terminal.Color.RED);
+            Main.terminal.putCharacter('\u2623');
+        }
+        //Draw statistics:
+        for(int i=0; i<Player.lives; i++) {
+            Main.terminal.moveCursor(i, 0);
+            Main.terminal.applyForegroundColor(Terminal.Color.RED);
+            Main.terminal.putCharacter('\u2665');
         }
     }
 }

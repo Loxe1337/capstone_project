@@ -20,12 +20,11 @@ import java.nio.charset.Charset;
 public class Main {
     public static Terminal terminal = TerminalFacade.createSwingTerminal();
     public static boolean run = true;
+    public static boolean won = false;
     
     public static void main(String args[]) throws InterruptedException {
-        System.out.println("Geben Sie den Namen der properties-Datei an:");
-        String s = ((new java.util.Scanner(System.in)).next())+".properties";
         try {
-            Configuration.setProps(s);
+            Configuration.setProps("level.properties");
         }
         catch (IOException e) {
             System.err.println("Property-File not found!");
@@ -33,13 +32,22 @@ public class Main {
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
         Player.MovePlayer(0, true);
+        Elements.MoveDynEnemy(true);
         while(run) {
+            Elements.MoveDynEnemy(false);
             Draw.Static();
             Draw.Dyn();
             Input.Analyse();
+            for(int i=0; i<Configuration.exit_nr; i++) {
+                if(Player.key_found && Configuration.exit_x[i] == Player.PlayerPos_x && Configuration.exit_y[i] == Player.PlayerPos_y) {
+                    Main.run = false;
+                    won = true;
+                }
+            }
         }
-        Thread.sleep(10000);
-        System.out.println(Player.PlayerPos_x+","+Player.PlayerPos_y);
         terminal.exitPrivateMode();
+        if(won) {
+            System.out.print("Congrats! You've won the game!");
+        }
     }
 }

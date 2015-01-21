@@ -40,8 +40,11 @@ public class Configuration {
                         entrance_nr += 1;
                     } else if(value.equals("2")) {
                         exit_nr += 1;
+                    } else if(value.equals("4")) {
+                        Elements.Enemy_Nr += 1;
+                    } else {
+                        field[i][n] = Integer.parseInt(value);
                     }
-                    field[i][n] = Integer.parseInt(value);
                 } else if(value == null){
                     field[i][n] = 6;
                 }
@@ -50,8 +53,6 @@ public class Configuration {
         //Position der Eingänge bestimmen:
         entrance_x = new int[entrance_nr];
         entrance_y = new int[entrance_nr];
-        exit_x = new int[exit_nr];
-        exit_y = new int[exit_nr];
         int x=0;
         while(x<entrance_nr){
             for(int i=0; i<width; i++) {
@@ -67,6 +68,10 @@ public class Configuration {
                 }
             }
         }
+        
+        //Position der Ausgänge bestimmen:
+        exit_x = new int[exit_nr];
+        exit_y = new int[exit_nr];
         x=0;
         while(x<exit_nr) {
             for(int i=0; i<width; i++) {
@@ -81,8 +86,25 @@ public class Configuration {
                     }
                 }
             }
-            System.out.println(entrance_x[0]+","+entrance_y[0]);
-            System.out.println(exit_x[0]+","+exit_y[0]);
+        }
+        
+        //Initiale Position der Dynamischen Hindernisse bestimmen:
+        Elements.EnemyFirstPos_x = new int[Elements.Enemy_Nr];
+        Elements.EnemyFirstPos_y = new int[Elements.Enemy_Nr];
+        x=0;
+        while(x<Elements.Enemy_Nr) {
+            for(int i=0; i<width; i++) {
+                for(int n=0; n<height; n++) {
+                    String key = Integer.toString(i) + "," + Integer.toString(n);
+                    if(properties.getProperty(key) != null) {
+                        if (properties.getProperty(key).equals("4")) {
+                            Elements.EnemyFirstPos_x[x] = i;
+                            Elements.EnemyFirstPos_y[x] = n;
+                            x+=1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
