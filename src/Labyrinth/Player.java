@@ -11,7 +11,7 @@ package Labyrinth;
  */
 public class Player {
     public static int PlayerPos_x, PlayerPos_y;
-    public static int lives=3;
+    public static int tries=3;
     public static boolean key_found = false;
     public static int rst_nr = 1;
     
@@ -39,14 +39,14 @@ public class Player {
                             PlayerPos_x-=1;
                             step=true;
                         } else if(Configuration.field[PlayerPos_x-1][PlayerPos_y]==3) {
-                            lives-=1;
+                            tries-=1;
                         } else if(Configuration.field[PlayerPos_x-1][PlayerPos_y]==5) {
                             key_found = true;
                             PlayerPos_x-=1;
                         }
                         for(int i=0; i<Elements.Enemy_Nr; i++) {
                             if((PlayerPos_x-1)==Elements.DynEnemyPos_x[i] && PlayerPos_y==Elements.DynEnemyPos_y[i]) {
-                                lives-=1;
+                                tries-=1;
                             }
                         }
                     }
@@ -63,14 +63,14 @@ public class Player {
                             PlayerPos_y-=1;
                             step=true;
                         } else if(Configuration.field[PlayerPos_x][PlayerPos_y-1]==3) {
-                            lives-=1;
+                            tries-=1;
                         } else if(Configuration.field[PlayerPos_x][PlayerPos_y-1]==5) {
                             key_found = true;
                             PlayerPos_y-=1;
                         }
                         for(int i=0; i<Elements.Enemy_Nr; i++) {
                             if(PlayerPos_x==Elements.DynEnemyPos_x[i] && (PlayerPos_y-1)==Elements.DynEnemyPos_y[i]) {
-                                lives-=1;
+                                tries-=1;
                             }
                         }
                     }
@@ -87,14 +87,14 @@ public class Player {
                             PlayerPos_x+=1;
                             step=true;
                         } else if(Configuration.field[PlayerPos_x+1][PlayerPos_y]==3) {
-                            lives-=1;
+                            tries-=1;
                         } else if(Configuration.field[PlayerPos_x+1][PlayerPos_y]==5) {
                             key_found = true;
                             PlayerPos_x+=1;
                         }
                         for(int i=0; i<Elements.Enemy_Nr; i++) {
                             if((PlayerPos_x+1)==Elements.DynEnemyPos_x[i] && PlayerPos_y==Elements.DynEnemyPos_y[i]) {
-                                lives-=1;
+                                tries-=1;
                             }
                         }
                     }
@@ -111,14 +111,14 @@ public class Player {
                             PlayerPos_y+=1;
                             step=true;
                         } else if(Configuration.field[PlayerPos_x][PlayerPos_y+1]==3) {
-                            lives-=1;
+                            tries-=1;
                         } else if(Configuration.field[PlayerPos_x][PlayerPos_y+1]==5) {
                             key_found = true;
                             PlayerPos_y+=1;
                         }
                         for(int i=0; i<Elements.Enemy_Nr; i++) {
                             if(PlayerPos_x==Elements.DynEnemyPos_x[i] && (PlayerPos_y+1)==Elements.DynEnemyPos_y[i]) {
-                                lives-=1;
+                                tries-=1;
                             }
                         }
                     }

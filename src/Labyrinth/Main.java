@@ -34,9 +34,9 @@ public class Main {
         Player.MovePlayer(0, true);
         Elements.MoveDynEnemy(true);
         while(run) {
-            Elements.MoveDynEnemy(false);
             Draw.Static();
             Draw.Dyn();
+            Elements.MoveDynEnemy(false);
             Input.Analyse();
             for(int i=0; i<Configuration.exit_nr; i++) {
                 if(Player.key_found && Configuration.exit_x[i] == Player.PlayerPos_x && Configuration.exit_y[i] == Player.PlayerPos_y) {

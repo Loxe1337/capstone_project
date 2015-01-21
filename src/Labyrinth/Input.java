@@ -22,7 +22,8 @@ public class Input {
         //Auf Eingabe reagieren:
         switch(key.getKind()) {
             case Escape:
-                /*Show Menu here*/;
+                Menu.MenuOpen = true;
+                Menu.show();
                 Draw.Static();
                 break;
             case NormalKey:

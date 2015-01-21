@@ -25,7 +25,7 @@ public class Draw {
                         Main.terminal.putCharacter('\u2612');
                         break;
                     case 1:
-                        Main.terminal.applyForegroundColor(Terminal.Color.BLACK);
+                        Main.terminal.applyForegroundColor(Terminal.Color.WHITE);
                         Main.terminal.putCharacter('\u26CC');
                         break;
                     case 2:
@@ -51,21 +51,24 @@ public class Draw {
     }
     
     public static void Dyn() {
-        //Draw Player:
-        Main.terminal.moveCursor(Player.PlayerPos_x,Player.PlayerPos_y+1);
-        Main.terminal.applyForegroundColor(Terminal.Color.BLUE);
-        Main.terminal.putCharacter('\u265C');
+        //Draw statistics:
+        for(int i=0; i<Player.tries; i++) {
+            Main.terminal.moveCursor(i, 0);
+            Main.terminal.applyForegroundColor(Terminal.Color.RED);
+            Main.terminal.putCharacter('\u2665');
+        }
+        if(Player.key_found) {
+            String key = "Key has been found!";
+        }
         //Draw dynamic Enemies:
         for(int i=0; i<Elements.Enemy_Nr; i++){
             Main.terminal.moveCursor(Elements.DynEnemyPos_x[i], Elements.DynEnemyPos_y[i]+1);
             Main.terminal.applyForegroundColor(Terminal.Color.RED);
             Main.terminal.putCharacter('\u2623');
         }
-        //Draw statistics:
-        for(int i=0; i<Player.lives; i++) {
-            Main.terminal.moveCursor(i, 0);
-            Main.terminal.applyForegroundColor(Terminal.Color.RED);
-            Main.terminal.putCharacter('\u2665');
-        }
+        //Draw Player:
+        Main.terminal.moveCursor(Player.PlayerPos_x,Player.PlayerPos_y+1);
+        Main.terminal.applyForegroundColor(Terminal.Color.BLUE);
+        Main.terminal.putCharacter('\u265C');
     }
 }
