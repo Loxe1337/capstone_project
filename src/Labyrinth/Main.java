@@ -34,9 +34,9 @@ public class Main {
         terminal.setCursorVisible(false);
         Player.MovePlayer(0, true);
         while(run) {
-            Input.Analyse();
             Draw.Static();
             Draw.Dyn();
+            Input.Analyse();
         }
         Thread.sleep(10000);
         System.out.println(Player.PlayerPos_x+","+Player.PlayerPos_y);

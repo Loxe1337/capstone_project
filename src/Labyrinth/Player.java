@@ -11,10 +11,13 @@ package Labyrinth;
  */
 public class Player {
     public static int PlayerPos_x, PlayerPos_y;
-    static int rst_nr = 1;
+    public static int lives=3;
+    public static int rst_nr = 1;
     
     public static void MovePlayer(int direction, boolean reset) {  //Methode, um Spieler zu bewegen bzw. auf den Eingang zu setzen
         if(reset) {
+            
+            //Spieler nach jedem Reset auf anderen Eingang setzen:
             PlayerPos_x = Configuration.entrance_x[Configuration.entrance_nr-rst_nr];
             PlayerPos_y = Configuration.entrance_y[Configuration.entrance_nr-rst_nr];
             if(rst_nr>=Configuration.entrance_nr) {
@@ -23,27 +26,68 @@ public class Player {
                 rst_nr +=1;
             }
         } else {
+            boolean step; //Step-Variable, um bei Ausgang keine 2 Schritte zu machen.
+            
+            //Bewegung ausführen:
             switch(direction) {
                 case 0:
                     break;
                 case 1:
+                    step=false;
                     if(PlayerPos_x>1) {
-                        PlayerPos_x-=1;
+                        if(Configuration.field[PlayerPos_x-1][PlayerPos_y]!=0) {
+                            PlayerPos_x-=1;
+                            step=true;
+                        }
+                    }
+                    for(int i=0; i<Configuration.exit_nr; i++) {
+                        if(Configuration.exit_y[i]==PlayerPos_y && PlayerPos_x>0 && !step) {
+                            PlayerPos_x-=1;
+                        }
                     }
                     break;
                 case 2:
+                    step=false;
                     if(PlayerPos_y>1) {
-                        PlayerPos_y-=1;
+                        if(Configuration.field[PlayerPos_x][PlayerPos_y-1]!=0) {
+                            PlayerPos_y-=1;
+                            step=true;
+                        }
+                    }
+                    for(int i=0; i<Configuration.exit_nr; i++) {
+                        if(Configuration.exit_x[i]==PlayerPos_x && PlayerPos_y>0 && !step) {
+                            PlayerPos_y-=1;
+                        }
                     }
                     break;
                 case 3:
-                    if(PlayerPos_x<(Configuration.width-2)) {
-                        PlayerPos_x+=1;
+                    step=false;
+                    if(PlayerPos_x<(Configuration.width-1)) {
+                        if(Configuration.field[PlayerPos_x+1][PlayerPos_y]!=0) {
+                            PlayerPos_x+=1;
+                            step=true;
+                        }
+                    }
+                    for(int i=0; i<Configuration.exit_nr; i++) {
+                        if(Configuration.exit_y[i]==PlayerPos_y && PlayerPos_x<Configuration.width && !step) {
+                            PlayerPos_x+=1;
+                        }
                     }
                     break;
                 case 4:
-                    if(PlayerPos_y<(Configuration.height-2)) {
-                        PlayerPos_y+=1;
+                    step=false;
+                    if(PlayerPos_y<(Configuration.height-1)) {
+                        if(Configuration.field[PlayerPos_x][PlayerPos_y+1]!=0) {
+                            PlayerPos_y+=1;
+                            step=true;
+                        }
+                    }
+                    for(int i=0; i<Configuration.exit_nr; i++) {
+                        if(Configuration.exit_x[i]==PlayerPos_x && PlayerPos_y<Configuration.height && !step) {
+                            PlayerPos_y+=1;
+                            System.out.println("Success!");
+                        }
+                        System.out.println(i);
                     }
                     break;
             }

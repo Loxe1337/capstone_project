@@ -52,7 +52,8 @@ public class Configuration {
         entrance_y = new int[entrance_nr];
         exit_x = new int[exit_nr];
         exit_y = new int[exit_nr];
-        for(int x=0; x<entrance_nr; x++) {
+        int x=0;
+        while(x<entrance_nr){
             for(int i=0; i<width; i++) {
                 for(int n=0; n<height; n++) {
                     String key = Integer.toString(i) + "," + Integer.toString(n);
@@ -60,25 +61,29 @@ public class Configuration {
                         if(properties.getProperty(key).equals("1")) {
                             entrance_x[x] = i;
                             entrance_y[x] = n;
+                            x+=1;
                         }
                     }
                 }
             }
         }
-        for(int x=0; x<exit_nr; x++) {
+        x=0;
+        while(x<exit_nr) {
             for(int i=0; i<width; i++) {
                 for(int n=0; n<height; n++) {
                     String key = Integer.toString(i) + "," + Integer.toString(n);
                     if(properties.getProperty(key) != null) {
-                        if (properties.getProperty(key).equals("1")) {
+                        if (properties.getProperty(key).equals("2")) {
                             exit_x[x] = i;
                             exit_y[x] = n;
+                            x+=1;
                         }
                     }
                 }
             }
+            System.out.println(entrance_x[0]+","+entrance_y[0]);
+            System.out.println(exit_x[0]+","+exit_y[0]);
         }
-        System.out.println(entrance_x[0]+","+entrance_y[0]);
     }
 }
 
